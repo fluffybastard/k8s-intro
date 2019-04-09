@@ -9,7 +9,13 @@
 `$ minikube start` : this will take some time.
 
 ### Check that the service is actually running
-`$ minikube version` : you should see something similar to this : `minikube version: v0.35.0`.
+`$ minikube status` : you should see something similar to this :
+```
+host: Running
+kubelet: Running
+apiserver: Running
+kubectl: Correctly Configured: pointing to minikube-vm at 192.168.99.100
+```
 
 ### Run a single pod
 Run a single `pod` using `nginx-single-pod.yml`.
