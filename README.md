@@ -1,5 +1,4 @@
-# k8s-intro
-## Introduction to K8s
+# Introduction to Kubernetes
 
 ### Requirements
 * Docker
@@ -125,3 +124,19 @@ Once you identified the deployment, delete it.
 ```
 deployment.extensions "web-server" deleted
 ```
+
+### OBS
+If you don't create a `service` type resource of explicitly expose a pod, all resources are only available
+inside the cluster.
+To manually expose a pod ( for testing purposes ), you can run this command.
+`$ kubectl port-forward -n default POD_NAME HOST_PORT:CONTAINER_PORT`
+
+### Example
+* Create the single pod resource from above
+`$ kubectl create -f resources/nginx-single-pod.yml`
+
+* Forward the host port to container.
+`$ kubectl port-forward -n default web-server 8081:80`
+
+* Test it from your browser.
+`http://localhost:8081`
