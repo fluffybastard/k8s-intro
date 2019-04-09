@@ -7,23 +7,23 @@
 * Minikube
 
 ### Start the local cluster
-`$ minikube start` : this will take some time
+`$ minikube start` : this will take some time.
 
 ### Check that the service is actually running
-`$ minikube version` : you should see something similar to this : `minikube version: v0.35.0`
+`$ minikube version` : you should see something similar to this : `minikube version: v0.35.0`.
 
 ### Run a single pod
-Run a single `pod` using `nginx-single-pod.yml`
+Run a single `pod` using `nginx-single-pod.yml`.
 `$ kubectl create -f resources/nginx-single-pod.yml`
 
-List running pods
+List running pods.
 `$ kubectl get pods -o wide`
 ```
 NAME         READY     STATUS    RESTARTS   AGE       IP           NODE
 web-server   1/1       Running   0          46s       172.17.0.2   minikube
 ```
 
-Additional information can be displayed with `describe` command
+Additional information can be displayed with `describe` command.
 `$ kubectl describe pods web-server`
 
 Sample output
@@ -83,19 +83,19 @@ Events:
   Normal  Started    1m    kubelet, minikube  Started container
 ```
 
-To delete a pod run 
+To delete a pod run.
 `$ kubectl delete pods web-server` : you should see something similar to this : `pod "web-server" deleted`
 
-Check the status by listing all pods
+Check the status by listing all pods.
 `$ kubectl get pods -o wide`
 
 If none are running you will see : `No resources found.`
 
 ### Run a multiple pods setup
-Create the resource
+Create the resource.
 `$ kubectl create -f resources/nginx-deployment.yml`
 
-List all running pods
+List all running pods.
 `$ kubectl get pods -o wide`
 ```
 NAME                          READY     STATUS    RESTARTS   AGE       IP           NODE
@@ -103,7 +103,7 @@ web-server-7cb4d54797-5z5kn   1/1       Running   0          7s        172.17.0.
 web-server-7cb4d54797-f8wzr   1/1       Running   0          7s        172.17.0.3   minikube
 ```
 
-List deployments ( what we just created )
+List deployments ( what we just created ).
 `$ kubectl get deploy`
 ```
 NAME         DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
@@ -112,3 +112,15 @@ web-server   2         2         2            2           2m
 
 The output shows the current and desired state of our deployment. Based on the `resources/nginx-deployment.yml`
 we requested 2 replicas of the same pod, which k8s created.
+
+To delete the current deployment, print the resource and choose the correct one.
+`$ kubectl get deploy`
+```
+NAME         DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+web-server   2         2         2            2           12m
+```
+Once you identified the deployment, delete it.
+`$ kubectl delete deploy web-server`
+```
+deployment.extensions "web-server" deleted
+```
