@@ -10,7 +10,4 @@
 `$ minikube start` : this will take some time
 
 ### Check that the service is actually running
-```bash
-$ minikube version
-``` 
-: you should see something similar to this : `minikube version: v0.35.0`
+`$ minikube version` : you should see something similar to this : `minikube version: v0.35.0`
