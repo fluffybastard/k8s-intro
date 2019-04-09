@@ -11,3 +11,74 @@
 
 ### Check that the service is actually running
 `$ minikube version` : you should see something similar to this : `minikube version: v0.35.0`
+
+### Run a single pod
+Run a single `pod` using `nginx-single-pod.yml`
+`$ kubectl create -f resources/nginx-single-pod.yml`
+
+List running pods
+`$ kubectl get pods -o wide`
+```
+NAME         READY     STATUS    RESTARTS   AGE       IP           NODE
+web-server   1/1       Running   0          46s       172.17.0.2   minikube
+```
+
+Additional information can be displayed with `describe` command
+`$ kubectl describe pods web-server`
+
+Sample output
+```
+Name:               web-server
+Namespace:          default
+Priority:           0
+PriorityClassName:  <none>
+Node:               minikube/10.0.2.15
+Start Time:         Tue, 09 Apr 2019 14:45:04 +0300
+Labels:             name=web-server
+Annotations:        <none>
+Status:             Running
+IP:                 172.17.0.2
+Containers:
+  nginx:
+    Container ID:   docker://be103db517b33228f543983728d642ccb9c5c671ce5fca66dcced6d6f2114a31
+    Image:          nginx
+    Image ID:       docker-pullable://nginx@sha256:c8a861b8a1eeef6d48955a6c6d5dff8e2580f13ff4d0f549e082e7c82a8617a2
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Tue, 09 Apr 2019 14:45:09 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  128Mi
+    Requests:
+      cpu:        500m
+      memory:     128Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-jw72v (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  default-token-jw72v:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-jw72v
+    Optional:    false
+QoS Class:       Guaranteed
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  2m    default-scheduler  Successfully assigned default/web-server to minikube
+  Normal  Pulling    1m    kubelet, minikube  pulling image "nginx"
+  Normal  Pulled     1m    kubelet, minikube  Successfully pulled image "nginx"
+  Normal  Created    1m    kubelet, minikube  Created container
+  Normal  Started    1m    kubelet, minikube  Started container
+```
