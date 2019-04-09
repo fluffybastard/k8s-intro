@@ -82,3 +82,33 @@ Events:
   Normal  Created    1m    kubelet, minikube  Created container
   Normal  Started    1m    kubelet, minikube  Started container
 ```
+
+To delete a pod run 
+`$ kubectl delete pods web-server` : you should see something similar to this : `pod "web-server" deleted`
+
+Check the status by listing all pods
+`$ kubectl get pods -o wide`
+
+If none are running you will see : `No resources found.`
+
+### Run a multiple pods setup
+Create the resource
+`$ kubectl create -f resources/nginx-deployment.yml`
+
+List all running pods
+`$ kubectl get pods -o wide`
+```
+NAME                          READY     STATUS    RESTARTS   AGE       IP           NODE
+web-server-7cb4d54797-5z5kn   1/1       Running   0          7s        172.17.0.2   minikube
+web-server-7cb4d54797-f8wzr   1/1       Running   0          7s        172.17.0.3   minikube
+```
+
+List deployments ( what we just created )
+`$ kubectl get deploy`
+```
+NAME         DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+web-server   2         2         2            2           2m
+```
+
+The output shows the current and desired state of our deployment. Based on the `resources/nginx-deployment.yml`
+we requested 2 replicas of the same pod, which k8s created.
