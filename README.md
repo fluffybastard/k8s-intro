@@ -133,10 +133,13 @@ To manually expose a pod ( for testing purposes ), you can run this command.
 
 ### Example
 * Create the single pod resource from above
+
 `$ kubectl create -f resources/nginx-single-pod.yml`
 
 * Forward the host port to container.
+
 `$ kubectl port-forward -n default web-server 8081:80`
 
 * Test it from your browser.
+
 `http://localhost:8081`
