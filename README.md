@@ -120,6 +120,7 @@ NAME         DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 web-server   2         2         2            2           12m
 ```
 Once you identified the deployment, delete it.
+
 `$ kubectl delete deploy web-server`
 ```
 deployment.extensions "web-server" deleted
