@@ -126,7 +126,7 @@ deployment.extensions "web-server" deleted
 ```
 
 ### OBS
-If you don't create a `service` type resource of explicitly expose a pod, all resources are only available
+If you don't create a `service` type resource or explicitly expose a pod, all resources are only available
 inside the cluster.
 To manually expose a pod ( for testing purposes ), you can run this command.
 `$ kubectl port-forward -n default POD_NAME HOST_PORT:CONTAINER_PORT`
