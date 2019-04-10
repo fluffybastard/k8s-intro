@@ -132,7 +132,7 @@ deployment.extensions "web-server" deleted
 ```
 
 ### OBS
-If you don't create a `service` type resource or explicitly expose a pod, all resources are only available
+If you don't create a `service` type resource or explicitly expose a pod, the resources are only available
 inside the cluster.
 To manually expose a pod ( for testing purposes ), you can run this command:
 
