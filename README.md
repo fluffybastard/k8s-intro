@@ -138,6 +138,8 @@ To manually expose a pod ( for testing purposes ), you can run this command:
 
 `$ kubectl port-forward -n default POD_NAME HOST_PORT:CONTAINER_PORT`
 
+`-n` is the namespace we are working on. For this example the `default` namespace is used.
+
 ### Example
 * Create the single pod resource from above:
 
