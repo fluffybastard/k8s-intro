@@ -3,18 +3,19 @@ kind: Deployment
 metadata:
   name: web-server
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
         app: hello-web
     spec:
       containers:
-      - name: nginx
-        image: nginx
+      - name: httpd
+        image: httpd
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
           - containerPort: 80
+
